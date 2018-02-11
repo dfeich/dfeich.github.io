@@ -1,0 +1,74 @@
+---
+layout: post
+title: A first test of page from org.
+date:   2018-02-11 11:42:33 +0100
+categories: jekyll update
+---
+
+<div id="outline-container-org198fc43" class="outline-2">
+<h2 id="org198fc43"><span class="section-number-2">1</span> a sample heading</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgbcf8141" class="outline-3">
+<h3 id="orgbcf8141"><span class="section-number-3">1.1</span> a sub heading</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><p>
+jekyll blogging
+</p>
+<ul class="org-ul">
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-jekyll-development-site-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-a-jekyll-development-site-on-ubuntu-16-04</a></li>
+<li><a href="https://www.vultr.com/docs/creating-a-jekyll-blog-on-ubuntu-16-04">https://www.vultr.com/docs/creating-a-jekyll-blog-on-ubuntu-16-04</a></li>
+<li><a href="https://orgmode.org/worg/org-tutorials/org-jekyll.html">https://orgmode.org/worg/org-tutorials/org-jekyll.html</a></li>
+<li><a href="https://github.com/tjaartvdwalt/jekyll-org-mode-converter">https://github.com/tjaartvdwalt/jekyll-org-mode-converter</a> some interesting notes on how to structure
+the org and jekyll sources in a single structure that can be easily pushed to github</li>
+<li><p>
+installing
+</p>
+<pre class="example">
+sudo apt-get install ruby ruby-dev make gc
+sudo gem install jekyll bundler
+</pre>
+
+<pre class="example">
+mkdir dfeich.github.io
+cd dfeich.github.io/
+</pre>
+
+<p>
+I then created the jekyll source structure
+</p>
+<pre class="example">
+jekyll new jkl-src
+
+</pre>
+
+<p>
+this required typing in my password, because jekyll seemingly pulled in some more ruby gems, and since I
+am using a centrally installed ruby, the paths to the install area requires root access. Not ideal.
+</p>
+
+<p>
+now, a first test view of the site can be gained by attaching a browser to <a href="http://localhost:4000/">http://localhost:4000/</a> after
+running
+</p>
+<pre class="example">
+cd jkl-src
+jekyll serve
+
+</pre></li>
+</ul>
+<p>
+The best description for using github pages with jekyll:  
+</p>
+<ul class="org-ul">
+<li><a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/</a></li>
+<li><a href="https://github.com/github/pages-gem">https://github.com/github/pages-gem</a></li>
+<li>I copied a number of files from <a href="https://github.com/lorepirri/cayman-blog">https://github.com/lorepirri/cayman-blog</a> which is built on
+top of the Cayman theme for jekyll. Github only supports a number of standard theme
+gems, so I just copied the layouts/ and includes/ directories</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
