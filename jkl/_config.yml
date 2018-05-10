@@ -13,14 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: dfeich blog
+title: Through the Eyes of the Overworld
 email: dfeich@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A blog that I started mainly to explain my fascination with Emacs and
-  the many ways it can make you efficient.
+  A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.
 destination: ../www
 baseurl: /www # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://github.com/dfeich/dfeich.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: dfeich
 github_username:  dfeich
 

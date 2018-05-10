@@ -1,10 +1,12 @@
 #+STARTUP: showall
 #+OPTIONS: toc:nil
+#+EXCLUDE_TAGS: noexport
+
 #+BEGIN_EXPORT html
 ---
 layout: post
 title: Using context dependent Hydras in Emacs
-tags: org-mode Emacs
+categories: org-mode Emacs
 ---
 #+END_EXPORT
 
@@ -12,12 +14,13 @@ Even though I think that learning and memorizing shortcuts is good for
 one's brain, a little help by the user interface is much appreciated,
 especially if one is working within a complex mode with many commands.
 
-One of the best interfaces of a complex Emacs package is [[https://magit.vc/][Magit]] which
-shows the key options in a popup buffer. Abo Abo's [[https://github.com/abo-abo/hydra][Hydra]] package
-allows one to define nice key menus and has been a game-changer for me
-in my daily use of Emacs. But the best use of it I started making
-beginning of this year, when I thought about implementing a little
-context sensitive Hydra launcher.
+One of the best interfaces of a complex Emacs package can be seen in
+[[https://magit.vc/][Magit]] which shows the available key options in a popup buffer. A
+little later Abo Abo made his [[https://github.com/abo-abo/hydra][Hydra]] package available. It allows to
+define nice key menus and has been a game-changer for me in my daily
+use of Emacs for the last two years. But the best use of it for myself
+I only found beginning of this year, when I had the idea about
+implementing a little context sensitive Hydra launcher.
 
 This was triggered when - as happens sometimes - I went random
 browsing for elisp commands (using =helm-apropos= from [[https://emacs-helm.github.io/helm/][helm]], another
@@ -27,7 +30,9 @@ the =*-barf-*= equivalents which allow pulling in the surounding text
 of a link into the link's description text word by word. That's a real
 nice functionality, but it only makes sense if you have a nice
 shortcut to it... because remembering and typing the command is about
-as big an effort as performing the task just by normal editing.
+as big an effort as performing the task just by normal editing. And I
+wanted not to sacrifice another of the rare free key combinations for
+commands I supposedly would not use that often.
 
 So, I implemented a little launcher that would present me with all the
 right commands if point was on an org link, another when in a table, a
@@ -80,6 +85,29 @@ And another one for source code blocks
 
 The code is not generic enough to make a nice package of it, and I'm
 also using some of my custom functions which I did not yet put into
-MELPA packages in there. But I give here the [[https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a][link of a github gist]]
+MELPA packages. But I give here the [[https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a][link of a github gist]]
 containig my current hydra definitions.
+
+* Examples                                                         :noexport:
+
+  These are a few examples for illustrating the use of the context
+  dependent Hydras.
+
+  
+  I want to slurp the "article" into the link description: [[https://www.nytimes.com/2009/07/19/magazine/19Vance-t.html][The Genre Artist]] article
+
+  
+  #+NAME: Persons
+  | Name         | Gender | Terces |
+  |--------------+--------+--------|
+  | Fianosther   | M      |     20 |
+  | Lodermulch   | M      |     30 |
+  | Derwe Coreme | F      |    500 |
+  | Mercantides  | M      |    100 |
+  | Ivanello     | M      |     15 |
+  | Mme Soldinck | F      |     35 |
+
+  #+BEGIN_SRC elisp :results output :var tbl=Persons
+  (pp tbl)
+  #+END_SRC
 
