@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- Non social metatags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#157878">
+
+    
+
+    <title>Using context dependent Hydras in Emacs</title>
+
+    
+      <!-- Update your html tag to include the itemscope and itemtype attributes. -->
+<html itemscope itemtype="http://schema.org/Article">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Place this data between the <head> tags of your website -->
+
+<meta name="description" content="Even though I think that learning and memorizing shortcuts is good for one&#39;s brain, a little help by the user interface is much appreciated, especial..." />
+
+
+
+
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Using context dependent Hydras in Emacs">
+<meta itemprop="description" content="Even though I think that learning and memorizing shortcuts is good for one&#39;s brain, a little help by the user interface is much appreciated, especial...">
+
+  <meta itemprop="image" content="http://localhost:4000/www">
+
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+<meta name="twitter:title" content="Using context dependent Hydras in Emacs">
+<meta name="twitter:description" content="Even though I think that learning and memorizing shortcuts is good for one&#39;s brain, a little help by the user interface is much appreciated, especial...">
+
+
+
+<!-- Twitter summary card with large image must be at least 280x150px -->
+
+  <meta name="twitter:image:src" content="http://localhost:4000/www">
+  <meta property="twitter:image" content="http://localhost:4000/www">
+
+<meta property="twitter:url" content="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Using context dependent Hydras in Emacs" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" />
+
+  <meta property="og:image" content="http://localhost:4000/www" />
+
+<meta property="og:description" content="Even though I think that learning and memorizing shortcuts is good for one&#39;s brain, a little help by the user interface is much appreciated, especial..." />
+<meta property="og:site_name" content="Through the Eyes of the Overworld" />
+
+  <meta property="article:published_time" content="2018-05-10T00:00:00+02:00" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <meta property="article:tag" content="org-mode">
+  
+    <meta property="article:tag" content="Emacs">
+  
+
+
+
+
+    
+
+    <link rel="canonical" href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">
+
+    
+
+    <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+    <meta name="robots" content="noarchive">
+
+    <!-- <link rel="alternate" media="only screen and (max-width: 640px)" href="">
+    <link rel="alternate" media="handheld" href=""> -->
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/www/assets/css/style.css?v=9d368ca1bc4dabac994f43c8aaad469576f18f86">
+  </head>
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+
+    
+      <a class="site-title" href="/www/">Through the Eyes of the Overworld</a>
+    
+
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+              
+                <a class="page-link" href="/www/about/">About</a>
+              
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    
+    
+    
+
+    <section class="page-header">
+      <h1 class="project-name">Using context dependent Hydras in Emacs</h1>
+      <h2 class="project-tagline"></h2>
+      
+      <!-- Post tagline -->
+      
+        <h2 class="project-date">
+        <time datetime="2018-05-10T00:00:00+02:00" itemprop="datePublished">
+          
+          May 10, 2018
+        </time>
+        
+        
+        </h2>
+      
+      <!-- End: Post tagline -->
+    </section>
+
+    <section class="main-content">
+
+      <article itemscope itemtype="http://schema.org/BlogPosting">
+
+  <!-- <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Using context dependent Hydras in Emacs</h1>
+    <p class="post-meta">
+      <time datetime="2018-05-10T00:00:00+02:00" itemprop="datePublished">
+        
+        May 10, 2018
+      </time>
+      </p>
+  </header> -->
+
+  <div itemprop="articleBody">
+    <p>
+Even though I think that learning and memorizing shortcuts is good for
+one's brain, a little help by the user interface is much appreciated,
+especially if one is working within a complex mode with many commands.
+</p>
+
+<p>
+One of the best interfaces of a complex Emacs package can be seen in
+<a href="https://magit.vc/">Magit</a> which shows the available key options in a popup buffer. A
+little later Abo Abo made his <a href="https://github.com/abo-abo/hydra">Hydra</a> package available. It allows to
+define nice key menus and has been a game-changer for me in my daily
+use of Emacs for the last two years. But the best use of it for myself
+I only found beginning of this year, when I had the idea about
+implementing a little context sensitive Hydra launcher.
+</p>
+
+<p>
+This was triggered when - as happens sometimes - I went random
+browsing for elisp commands (using <code>helm-apropos</code> from <a href="https://emacs-helm.github.io/helm/">helm</a>, another
+of my favorite packages) and I discovered
+<code>org-link-edit-forward-slurp</code> and <code>org-link-edit-backward-slurp</code> and
+the <code>*-barf-*</code> equivalents which allow pulling in the surounding text
+of a link into the link's description text word by word. That's a real
+nice functionality, but it only makes sense if you have a nice
+shortcut to it&#x2026; because remembering and typing the command is about
+as big an effort as performing the task just by normal editing. And I
+wanted not to sacrifice another of the rare free key combinations for
+commands I supposedly would not use that often.
+</p>
+
+<p>
+So, I implemented a little launcher that would present me with all the
+right commands if point was on an org link, another when in a table, a
+source block, etc. I've been growing this over the last few months and
+I can say now that I've had it in constant use since day one.
+</p>
+
+<p>
+This is the basic launcher code. It makes a main differentiation
+according to the Emacs <code>major-mode</code> and for org uses the
+<code>org-element-context</code> and <code>org-element-property</code> functions to react
+according to the specific context element/type.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">dfeich/context-hydra-launcher</span> <span style="color: #7388D6;">()</span>
+  <span style="color: #036A07;">"A launcher for hydras based on the current context."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">interactive</span><span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">cl-case</span> major-mode
+    <span style="color: #909183;">(</span>'org-mode <span style="color: #709870;">(</span><span style="color: #0000FF;">let*</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>elem <span style="color: #858580;">(</span>org-element-context<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+                      <span style="color: #6276BA;">(</span>etype <span style="color: #858580;">(</span>car elem<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+                      <span style="color: #6276BA;">(</span>type <span style="color: #858580;">(</span>org-element-property <span style="color: #006FE0;">:type</span> elem<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+                 <span style="color: #907373;">(</span><span style="color: #0000FF;">cl-case</span> etype
+                   <span style="color: #6276BA;">(</span>src-block <span style="color: #858580;">(</span>hydra-babel-helper/body<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+                   <span style="color: #6276BA;">(</span>link <span style="color: #858580;">(</span>hydra-org-link-helper/body<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+                   <span style="color: #6276BA;">(</span><span style="color: #858580;">(</span>table-row table-cell<span style="color: #858580;">)</span> <span style="color: #858580;">(</span>hydra-org-table-helper/body<span style="color: #858580;">)</span> <span style="color: #6276BA;">)</span>
+                   <span style="color: #6276BA;">(</span>t <span style="color: #858580;">(</span>message <span style="color: #008000;">"No specific hydra for %s/%s"</span> etype type<span style="color: #858580;">)</span>
+                      <span style="color: #858580;">(</span>hydra-org-default/body<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+               <span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>'bibtex-mode <span style="color: #709870;">(</span>org-ref-bibtex-hydra/body<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>'ibuffer-mode <span style="color: #709870;">(</span>hydra-ibuffer-main/body<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>t <span style="color: #709870;">(</span>message <span style="color: #008000;">"No hydra for this major mode: %s"</span> major-mode<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span>global-set-key <span style="color: #7388D6;">(</span>kbd <span style="color: #008000;">"&lt;f9&gt; &lt;f9&gt;"</span><span style="color: #7388D6;">)</span> 'dfeich/context-hydra-launcher<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+
+<p>
+The following image shows an example for invoking the context launcher
+on an org-mode link.
+</p>
+
+
+<div class="figure">
+<p><img src="/www/assets/images/hydra-orglink.png" alt="hydra-orglink.png" />
+</p>
+</div>
+
+
+<p>
+And here what is launched when the cursor is inside of a table
+</p>
+
+
+<div class="figure">
+<p><img src="/www/assets/images/hydra-orgtable.png" alt="hydra-orgtable.png" />
+</p>
+</div>
+
+
+<p>
+And another one for source code blocks
+</p>
+
+
+<div class="figure">
+<p><img src="/www/assets/images/hydra-orgsrcblock.png" alt="hydra-orgsrcblock.png" />
+</p>
+</div>
+
+
+<p>
+The code is not generic enough to make a nice package of it, and I'm
+also using some of my custom functions which I did not yet put into
+MELPA packages. But I give here the <a href="https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a">link of a github gist</a>
+containig my current hydra definitions.
+</p>
+
+  </div>
+
+  
+</article>
+
+
+      <footer class="site-footer">
+        <!-- SVG icons from https://iconmonstr.com -->
+
+        <!-- Github icon -->
+        <span class="my-span-icon">
+          <a href="http://github.com/dfeich" aria-label="dfeich's GitHub" title="dfeich's GitHub">
+            <svg class="my-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </span>
+
+        <!-- Twitter icon -->
+        <span class="my-span-icon">
+          <a href="https://twitter.com/" aria-label="dfeich's Twitter" title="dfeich's Twitter">
+            <svg class="my-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"/></svg>
+          </a>
+        </span>
+
+        <!-- RSS icon -->
+        
+        <!-- Contact icon -->
+        
+        
+          <span class="my-span-icon">
+            <a href="/www/about/" aria-label="Contact" title="Contact dfeich">
+              <svg class="my-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 .02c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 6.98l-6.99 5.666-6.991-5.666h13.981zm.01 10h-14v-8.505l7 5.673 7-5.672v8.504z"/></svg>
+            </a>
+          </span>
+        
+
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

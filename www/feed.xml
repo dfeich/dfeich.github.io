@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-10T23:25:28+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Using context dependent Hydras in Emacs</title><link href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" rel="alternate" type="text/html" title="Using context dependent Hydras in Emacs" /><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">&lt;p&gt;
+Even though I think that learning and memorizing shortcuts is good for
+one's brain, a little help by the user interface is much appreciated,
+especially if one is working within a complex mode with many commands.
+&lt;/p&gt;
+
+&lt;p&gt;
+One of the best interfaces of a complex Emacs package can be seen in
+&lt;a href=&quot;https://magit.vc/&quot;&gt;Magit&lt;/a&gt; which shows the available key options in a popup buffer. A
+little later Abo Abo made his &lt;a href=&quot;https://github.com/abo-abo/hydra&quot;&gt;Hydra&lt;/a&gt; package available. It allows to
+define nice key menus and has been a game-changer for me in my daily
+use of Emacs for the last two years. But the best use of it for myself
+I only found beginning of this year, when I had the idea about
+implementing a little context sensitive Hydra launcher.
+&lt;/p&gt;
+
+&lt;p&gt;
+This was triggered when - as happens sometimes - I went random
+browsing for elisp commands (using &lt;code&gt;helm-apropos&lt;/code&gt; from &lt;a href=&quot;https://emacs-helm.github.io/helm/&quot;&gt;helm&lt;/a&gt;, another
+of my favorite packages) and I discovered
+&lt;code&gt;org-link-edit-forward-slurp&lt;/code&gt; and &lt;code&gt;org-link-edit-backward-slurp&lt;/code&gt; and
+the &lt;code&gt;*-barf-*&lt;/code&gt; equivalents which allow pulling in the surounding text
+of a link into the link's description text word by word. That's a real
+nice functionality, but it only makes sense if you have a nice
+shortcut to it&amp;#x2026; because remembering and typing the command is about
+as big an effort as performing the task just by normal editing. And I
+wanted not to sacrifice another of the rare free key combinations for
+commands I supposedly would not use that often.
+&lt;/p&gt;
+
+&lt;p&gt;
+So, I implemented a little launcher that would present me with all the
+right commands if point was on an org link, another when in a table, a
+source block, etc. I've been growing this over the last few months and
+I can say now that I've had it in constant use since day one.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is the basic launcher code. It makes a main differentiation
+according to the Emacs &lt;code&gt;major-mode&lt;/code&gt; and for org uses the
+&lt;code&gt;org-element-context&lt;/code&gt; and &lt;code&gt;org-element-property&lt;/code&gt; functions to react
+according to the specific context element/type.
+&lt;/p&gt;
+
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-elisp&quot;&gt;&lt;span style=&quot;color: #707183;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0000FF;&quot;&gt;defun&lt;/span&gt; &lt;span style=&quot;color: #006699;&quot;&gt;dfeich/context-hydra-launcher&lt;/span&gt; &lt;span style=&quot;color: #7388D6;&quot;&gt;()&lt;/span&gt;
+  &lt;span style=&quot;color: #036A07;&quot;&gt;&quot;A launcher for hydras based on the current context.&quot;&lt;/span&gt;
+  &lt;span style=&quot;color: #7388D6;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0000FF;&quot;&gt;interactive&lt;/span&gt;&lt;span style=&quot;color: #7388D6;&quot;&gt;)&lt;/span&gt;
+  &lt;span style=&quot;color: #7388D6;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0000FF;&quot;&gt;cl-case&lt;/span&gt; major-mode
+    &lt;span style=&quot;color: #909183;&quot;&gt;(&lt;/span&gt;'org-mode &lt;span style=&quot;color: #709870;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0000FF;&quot;&gt;let*&lt;/span&gt; &lt;span style=&quot;color: #907373;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;elem &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;org-element-context&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;
+                      &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;etype &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;car elem&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;
+                      &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;type &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;org-element-property &lt;span style=&quot;color: #006FE0;&quot;&gt;:type&lt;/span&gt; elem&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #907373;&quot;&gt;)&lt;/span&gt;
+                 &lt;span style=&quot;color: #907373;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0000FF;&quot;&gt;cl-case&lt;/span&gt; etype
+                   &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;src-block &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;hydra-babel-helper/body&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;
+                   &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;link &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;hydra-org-link-helper/body&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;
+                   &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;table-row table-cell&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;hydra-org-table-helper/body&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;
+                   &lt;span style=&quot;color: #6276BA;&quot;&gt;(&lt;/span&gt;t &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;message &lt;span style=&quot;color: #008000;&quot;&gt;&quot;No specific hydra for %s/%s&quot;&lt;/span&gt; etype type&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;
+                      &lt;span style=&quot;color: #858580;&quot;&gt;(&lt;/span&gt;hydra-org-default/body&lt;span style=&quot;color: #858580;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #6276BA;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #907373;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #709870;&quot;&gt;)&lt;/span&gt;
+               &lt;span style=&quot;color: #909183;&quot;&gt;)&lt;/span&gt;
+    &lt;span style=&quot;color: #909183;&quot;&gt;(&lt;/span&gt;'bibtex-mode &lt;span style=&quot;color: #709870;&quot;&gt;(&lt;/span&gt;org-ref-bibtex-hydra/body&lt;span style=&quot;color: #709870;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #909183;&quot;&gt;)&lt;/span&gt;
+    &lt;span style=&quot;color: #909183;&quot;&gt;(&lt;/span&gt;'ibuffer-mode &lt;span style=&quot;color: #709870;&quot;&gt;(&lt;/span&gt;hydra-ibuffer-main/body&lt;span style=&quot;color: #709870;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #909183;&quot;&gt;)&lt;/span&gt;
+    &lt;span style=&quot;color: #909183;&quot;&gt;(&lt;/span&gt;t &lt;span style=&quot;color: #709870;&quot;&gt;(&lt;/span&gt;message &lt;span style=&quot;color: #008000;&quot;&gt;&quot;No hydra for this major mode: %s&quot;&lt;/span&gt; major-mode&lt;span style=&quot;color: #709870;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #909183;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #7388D6;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #707183;&quot;&gt;)&lt;/span&gt;
+
+&lt;span style=&quot;color: #707183;&quot;&gt;(&lt;/span&gt;global-set-key &lt;span style=&quot;color: #7388D6;&quot;&gt;(&lt;/span&gt;kbd &lt;span style=&quot;color: #008000;&quot;&gt;&quot;&amp;lt;f9&amp;gt; &amp;lt;f9&amp;gt;&quot;&lt;/span&gt;&lt;span style=&quot;color: #7388D6;&quot;&gt;)&lt;/span&gt; 'dfeich/context-hydra-launcher&lt;span style=&quot;color: #707183;&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;
+The following image shows an example for invoking the context launcher
+on an org-mode link.
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/hydra-orglink.png&quot; alt=&quot;hydra-orglink.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;
+And here what is launched when the cursor is inside of a table
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/hydra-orgtable.png&quot; alt=&quot;hydra-orgtable.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;
+And another one for source code blocks
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/hydra-orgsrcblock.png&quot; alt=&quot;hydra-orgsrcblock.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;
+The code is not generic enough to make a nice package of it, and I'm
+also using some of my custom functions which I did not yet put into
+MELPA packages. But I give here the &lt;a href=&quot;https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a&quot;&gt;link of a github gist&lt;/a&gt;
+containig my current hydra definitions.
+&lt;/p&gt;</content><author><name></name></author><summary type="html">Even though I think that learning and memorizing shortcuts is good for one's brain, a little help by the user interface is much appreciated, especially if one is working within a complex mode with many commands.</summary></entry></feed>
