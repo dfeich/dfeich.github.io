@@ -3,12 +3,12 @@
 #+BEGIN_EXPORT html
 ---
 layout: post
-title: A first test of page from org.
+title: A first test page converted from org. quote's test
 excerpt: Some excerpt
 ---
 #+END_EXPORT
 
-* a sample heading
+* a sample heading for derek's blog
 ** a sub heading
    - jekyll blogging
      - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-jekyll-development-site-on-ubuntu-16-04

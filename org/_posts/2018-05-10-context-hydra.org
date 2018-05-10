@@ -1,0 +1,85 @@
+#+STARTUP: showall
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT html
+---
+layout: post
+title: Using context dependent Hydras in Emacs
+tags: org-mode Emacs
+---
+#+END_EXPORT
+
+Even though I think that learning and memorizing shortcuts is good for
+one's brain, a little help by the user interface is much appreciated,
+especially if one is working within a complex mode with many commands.
+
+One of the best interfaces of a complex Emacs package is [[https://magit.vc/][Magit]] which
+shows the key options in a popup buffer. Abo Abo's [[https://github.com/abo-abo/hydra][Hydra]] package
+allows one to define nice key menus and has been a game-changer for me
+in my daily use of Emacs. But the best use of it I started making
+beginning of this year, when I thought about implementing a little
+context sensitive Hydra launcher.
+
+This was triggered when - as happens sometimes - I went random
+browsing for elisp commands (using =helm-apropos= from [[https://emacs-helm.github.io/helm/][helm]], another
+of my favorite packages) and I discovered
+=org-link-edit-forward-slurp= and =org-link-edit-backward-slurp= and
+the =*-barf-*= equivalents which allow pulling in the surounding text
+of a link into the link's description text word by word. That's a real
+nice functionality, but it only makes sense if you have a nice
+shortcut to it... because remembering and typing the command is about
+as big an effort as performing the task just by normal editing.
+
+So, I implemented a little launcher that would present me with all the
+right commands if point was on an org link, another when in a table, a
+source block, etc. I've been growing this over the last few months and
+I can say now that I've had it in constant use since day one.
+
+This is the basic launcher code. It makes a main differentiation
+according to the Emacs =major-mode= and for org uses the
+=org-element-context= and =org-element-property= functions to react
+according to the specific context element/type.
+
+#+BEGIN_SRC elisp
+(defun dfeich/context-hydra-launcher ()
+  "A launcher for hydras based on the current context."
+  (interactive)
+  (cl-case major-mode
+    ('org-mode (let* ((elem (org-element-context))
+		      (etype (car elem))
+		      (type (org-element-property :type elem)))
+		 (cl-case etype
+		   (src-block (hydra-babel-helper/body))
+		   (link (hydra-org-link-helper/body))
+		   ((table-row table-cell) (hydra-org-table-helper/body) )
+		   (t (message "No specific hydra for %s/%s" etype type)
+		      (hydra-org-default/body))))
+	       )
+    ('bibtex-mode (org-ref-bibtex-hydra/body))
+    ('ibuffer-mode (hydra-ibuffer-main/body))
+    (t (message "No hydra for this major mode: %s" major-mode))))
+
+(global-set-key (kbd "<f9> <f9>") 'dfeich/context-hydra-launcher)
+#+END_SRC
+
+
+The following image shows an example for invoking the context launcher
+on an org-mode link.
+
+[[file:assets/images/hydra-orglink.png]]
+
+
+And here what is launched when the cursor is inside of a table
+
+[[file:assets/images/hydra-orgtable.png]]
+
+
+And another one for source code blocks
+
+[[file:assets/images/hydra-orgsrcblock.png]]
+
+
+The code is not generic enough to make a nice package of it, and I'm
+also using some of my custom functions which I did not yet put into
+MELPA packages in there. But I give here the [[https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a][link of a github gist]]
+containig my current hydra definitions.
+
