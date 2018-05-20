@@ -7,6 +7,7 @@
 layout: post
 title: Using context dependent Hydras in Emacs
 categories: org-mode Emacs
+author: Derek Feichtinger
 ---
 #+END_EXPORT
 

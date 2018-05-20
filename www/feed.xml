@@ -1,4 +1,401 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-10T23:25:28+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Using context dependent Hydras in Emacs</title><link href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" rel="alternate" type="text/html" title="Using context dependent Hydras in Emacs" /><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-20T23:50:48+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Reproducible Research and Software Development Methods for Management tasks</title><link href="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html" rel="alternate" type="text/html" title="Reproducible Research and Software Development Methods for Management tasks" /><published>2018-05-20T00:00:00+02:00</published><updated>2018-05-20T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html">&lt;p&gt;
+The amount of administrative tasks in today's workplace is steadily
+growing, whether you are a manager or just driven by requirements from
+management for more and more reports. The introduction of IT into these
+processes held the big potential of easing some of the tedious tasks
+through automatization and integration, but it seems that we are still a
+long way away from that goal. Segregated toolchains, lack of compatibility
+of interfaces and different work cultures combined with the increased
+amount of communication have resulted in an increase of
+stress and drudgery. Dealing with the fallout often requires substantial manual
+effort, frequently in a form which is not reusable and sustainable.
+&lt;/p&gt;
+
+&lt;p&gt;
+What can we as scientists and software engineers do to improve our
+situation? I am asking this in the most pragmatic sense and I will
+describe what I found over the last years to work for me. So, this is
+not about demanding that the world suddenly becomes perfect and
+reasonable by magically establishing compatible standards and adopt
+harmonized best practices agreed on by everyone - this will not
+happen. I just want to demonstrate that we can just use our knowledge
+from science and engineering and combine them smartly with existing
+frameworks. My own background is in physical chemistry with long years
+working in scientific computing, so management is for me another
+acquired skill which I had to grow into (and sometimes I still feel
+baffled by some of the concepts&amp;#x2026;).
+&lt;/p&gt;
+
+&lt;p&gt;
+So let's see what we can do based on the toolchains that we learn in
+data science and software engineering. I will use &lt;a href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;GNU Emacs&lt;/a&gt; to present
+my current workflow, but the ideas are generic and you may find other solutions.
+&lt;/p&gt;
+
+&lt;p&gt;
+If you are just interested into the Emacs workflow using my new package &lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; 
+you can just scroll down to &lt;a href=&quot;#org6196d0c&quot;&gt;the example section&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;div id=&quot;outline-container-org1b6cf07&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org1b6cf07&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;1&lt;/span&gt; The problem&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-1&quot;&gt;
+&lt;p&gt;
+The sad reality is that a lot of management document methodology
+comes in the form of Excel and Powerpoint documents. While I think that Excel
+is a good piece of software for enabling people to obtain results fast and
+in a nicely interactive way, it's work model for complex or
+long-lived documents is definitely sub-optimal.
+&lt;/p&gt;
+
+&lt;p&gt;
+Reasons
+&lt;/p&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;b&gt;changes to the document are difficult to track&lt;/b&gt; in a transparent and comprehensible way.
+Compare this to the established way we track software changes in revision control
+systems like git. There we not only track each change, but also the motivations for it.&lt;/li&gt;
+&lt;li&gt;as the Excel documents gets bigger, it tends to contain many sheets with lots of references.
+Errors easily creep in and are difficult to spot (e.g. numbers outside of formula cell ranges
+which are silently ignored). Compare this to &lt;b&gt;unit tests and integration tests&lt;/b&gt; that we use
+continually in software development and scientific programming.&lt;/li&gt;
+&lt;li&gt;there is a lot of copy &amp;amp; paste going on, from the Excel sheet into
+a word document used as a report, to a Powerpoint to do a
+presentation. In data science we also take care to &lt;b&gt;track the
+changes to data (data provenance)&lt;/b&gt; and to make sure that a document
+references a dataset in a clearly identifyable way.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orge8a69eb&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orge8a69eb&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;2&lt;/span&gt; What we want&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-2&quot;&gt;
+&lt;p&gt;
+Let's take as an example the planning of a complex budget over several years.
+&lt;/p&gt;
+
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;We would like to have way to put down our budget entries in a form which
+&lt;b&gt;allows adding comments and other meta data&lt;/b&gt; to explain the entry.&lt;/li&gt;
+&lt;li&gt;When we get improved forecast information, we would like to be able and override
+previous information without deleting it, so that an &lt;b&gt;audit trail&lt;/b&gt; is conserved.&lt;/li&gt;
+&lt;li&gt;The format in which we write down all of this information should lend itself to
+&lt;b&gt;automatically generate a data set&lt;/b&gt; that can be manipulated with state of the art
+tools.&lt;/li&gt;
+&lt;li&gt;The &lt;b&gt;code producing the budget forecasts and plots should be a part of the document&lt;/b&gt;,
+so that we can hand it to somebody else, and she can easily understand how we came
+to the numbers.&lt;/li&gt;
+&lt;li&gt;The format should be easily &lt;b&gt;manageable by standard revision control systems&lt;/b&gt;, so that
+we can nicely document the changes over time.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Produce beautiful and readable documents&lt;/b&gt; in a mostly automatic way for optimal
+readability.&lt;/li&gt;
+&lt;li&gt;Since our management very often desires Excel or other formats, we
+would also like to &lt;b&gt;be able and export to these other formats as
+well&lt;/b&gt;&amp;#x2026; but all from the same source.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgee94721&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgee94721&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;3&lt;/span&gt; Three Musketeers to the Rescue&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-3&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org84e0e3a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org84e0e3a&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;3.1&lt;/span&gt; Reproducible Research&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-3-1&quot;&gt;
+&lt;p&gt;
+&lt;b&gt;Reproducible research&lt;/b&gt; is an important topic in today's IT
+research and it also has a big significance for our society and the
+ethics of conducting research. It is important to keep the
+underlying data, algorithms, and argumentation, so that others can
+follow the analysis of the data and understand the
+conclusions. Today's interest in SW containers like Docker is apart
+from being a great deployment mechanism also powered by this desire
+to allow the conservation of computational environments in an
+easily sharable form.
+&lt;/p&gt;
+
+&lt;p&gt;
+The concept of &lt;i&gt;Reproducible research&lt;/i&gt; is closely related to the
+idea of &lt;b&gt;literate programing&lt;/b&gt; that Donald Knuth launched with &lt;a href=&quot;http://www.literateprogramming.com/knuthweb.pdf&quot;&gt;his
+seminal article&lt;/a&gt; in 1984. Literate programming environments allow
+the free mixing of code parts with extensive documentation
+parts. The source of a literate programming document contains all
+necessary data as well as the code for manipulating the data to
+produce results and plots. It also contains all the text and
+argumentation. Out of this source document one then can generate a
+nice publication, but also other derived information (e.g. a
+standalone software program and a data set, or an excel sheet to
+give to management).
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;a href=&quot;https://orgmode.org/&quot;&gt;Org mode for Emacs&lt;/a&gt; is one such environment, but there are also
+others (e.g. look at &lt;a href=&quot;https://reproducibleresearch.net/links/&quot;&gt;this list of links&lt;/a&gt; maintained by
+reproducibleresearch.net). Another open source environment in rapid
+development is given by &lt;a href=&quot;http://jupyter.org/&quot;&gt;Jupyter notebooks&lt;/a&gt;. They are very popular
+among scientists. These frameworks are not only great for
+publishing research in a reproducible manner, but also are becoming
+one of the best teaching aids, since students can easily experiment
+with self-contained documents.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgfbe06dc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgfbe06dc&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;3.2&lt;/span&gt; Software Best Practices&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-3-2&quot;&gt;
+&lt;p&gt;
+Changes of source code should be tracked by &lt;b&gt;revision control
+systems&lt;/b&gt; (RCS) like &lt;a href=&quot;https://git-scm.com/&quot;&gt;git&lt;/a&gt;. An optimal tracking is possible, if the
+differences from one version of a document to the next can be
+easily visualized. This usually requires that the document format
+is in a text based format and not some closed binary format.
+The RCS help us to track changes through time, and we also can
+add metadata in the form of comments to explain the motivations for the
+changes.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;b&gt;Humans will make errors&lt;/b&gt;, and each time one does something non-trivial, especially
+when it is of a repetitive nature, errors easily creep in. Also, doing changes
+in one part of a complex thing may cause other parts of our wonderful ivory tower
+computation to collapse. So, in SW engineering the ideas of &lt;b&gt;unit and intergration tests&lt;/b&gt;
+has become an accepted paradigm.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;b&gt;Versioning.&lt;/b&gt; Documents should be versioned in a clearly defined way similar as
+to what we do with widely accepted standards like &lt;a href=&quot;https://semver.org/&quot;&gt;semantic versioning&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;b&gt;Templating and Repetition&lt;/b&gt; Repetitive parts in a document, e.g. if
+for a budget of many services a certain basic text/table/graphics
+structure needs to be repeated multiple times, we would like to
+generate it by a single code block that we call with different
+arguments - and not by copy/paste and manual editing. Senseless
+repetition or copy/paste is useless human toil and leads to
+errors. later changes to the basic structure should not involve us
+in making changes in a hundered places.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org31545dc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org31545dc&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;3.3&lt;/span&gt; Data Analysis Tools&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-3-3&quot;&gt;
+&lt;p&gt;
+There exists a plethora of programming languages and libraries to
+deal with data in all of its forms. In particular, &lt;b&gt;Python&lt;/b&gt; is a
+language which has found increasing adoption by the scientific
+community over the last decade. It is expressive and provides a
+wealth of libraries and also frameworks for interactive data
+analysis. Naturally there are other solutions as well, e.g. &lt;a href=&quot;https://www.r-project.org/&quot;&gt;the R
+project&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+Since I am a Python person, I will recommend the following libraries for tackling
+the kind of management related problems we are talking about
+&lt;/p&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/&quot;&gt;Pandas&lt;/a&gt;: easy-to-use data structures and data analysis tools&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.numpy.org/&quot;&gt;numpy&lt;/a&gt;: fundamental package for scientific computing. Used by Pandas&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt; and &lt;a href=&quot;https://seaborn.pydata.org/&quot;&gt;seaborn&lt;/a&gt; for visualization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org6196d0c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org6196d0c&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;4&lt;/span&gt; An example workflow using Emacs Org mode and python&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-4&quot;&gt;
+&lt;p&gt;
+In the following I will demonstrate my own planning workflow that I
+built myself over the last years using Emacs and its fabulous
+Org-Mode.
+&lt;/p&gt;
+
+&lt;p&gt;
+Emacs is a phantastic environment for programmers, since the whole
+editor is an extensible lisp environment with a vibrant community producing
+new packages.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orge10ec01&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orge10ec01&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;4.1&lt;/span&gt; Plan using an outliner&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-4-1&quot;&gt;
+&lt;p&gt;
+Outliners are ideal for jotting down thoughts and ideas. Some
+people may prefer mind-maps, but in the end the underlying data
+structures are mostly identical. The outliner lists are certainly
+more efficient for a proficient typist and are easily mixed with
+other parts of a text.
+&lt;/p&gt;
+
+&lt;p&gt;
+I have used outlines for years for planning project and service
+budgets for our scientific computing section. Sub-items can be used
+to add additional information to a top level list item or to
+provide new information.
+&lt;/p&gt;
+
+&lt;p&gt;
+But only now I implemented a better way automatically derive a
+useful data structure from such a list in a new Emacs package
+&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; (The link points to github, but I am just getting
+the package ready for submission as another MELPA package. It still
+needs a bit of polishing and additional features ).
+&lt;/p&gt;
+
+&lt;p&gt;
+Hear an example for a planning list for a budget of two (non-IT) services.
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/org-listcruncher-list1.png&quot; alt=&quot;org-listcruncher-list1.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+My rules for writing such a planning list are
+&lt;/p&gt;
+&lt;ol class=&quot;org-ol&quot;&gt;
+&lt;li&gt;Each line contains a tag defining wheter the line will become a table row. For this
+example I defined this as the string &quot;item:&quot;. Rows without such a tag just serve as
+metadata.&lt;/li&gt;
+&lt;li&gt;A string following the output tag &quot;item:&quot; is taken as the description of the table row.&lt;/li&gt;
+&lt;li&gt;Each line can contain any number of key/value pairs in parentheses in the form
+&lt;code&gt;(key1: val1, key2: val2, ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Lines of lower hierarchical order in the list inherit their default settings for key/values
+from the upper items.&lt;/li&gt;
+&lt;li&gt;The key value of a higher order item can be overwritten by a new new value for the same key
+in a lower order line.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;
+Note that &lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; allows the user to supply an own parsing function, so the
+rules for how the key/values, the description, and the tagging for a row can get
+arbitrarily defined by the end user. The present default function is just an easy example.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org521f196&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org521f196&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;4.2&lt;/span&gt; Generate a table from the outline&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-4-2&quot;&gt;
+&lt;p&gt;
+We now would like to derive from the planning list a more suitable
+data format for doing computations. A table is an optimal
+format. The main function of &lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; provides just this
+conversion. Based on the semantics defined in the previous section.
+&lt;/p&gt;
+
+&lt;p&gt;
+The following Org mode code block contains a single line of Emacs
+lisp and uses the above list (which I named &lt;code&gt;lstShipGalante&lt;/code&gt;) and
+automatically creates a table based on an &quot;outer join&quot; of all the
+keys found with the respective values arranged in the resulting
+columns.
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/org-listcruncher-table1.png&quot; alt=&quot;org-listcruncher-table1.png&quot; /&gt;   
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;
+The list from which we generate the table can later be further
+edited, and all derivative results will change accordingly. The
+audit trail is conserved in the list, and naturally it will also be
+conserved in the commits into the revision control system.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org20821ad&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org20821ad&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;4.3&lt;/span&gt; Data analysis and visualization&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-4-3&quot;&gt;
+&lt;p&gt;
+Now, as the data is in an easily accessible form, we can use Org mode's Babel feature to
+read in the table into a python code block and perform some Pandas data
+manipulation magic on it.
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/org-listcruncher-tablegrouped1.png&quot; alt=&quot;org-listcruncher-tablegrouped1.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+And another little code block lets us visualize cuts of the data with matplotlib and seaborn.
+&lt;/p&gt;
+
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/www/assets/images/org-listcruncher-src-for-plot1.png&quot; alt=&quot;org-listcruncher-src-for-plot1.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;
+And we can generate the plots for our report.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;/www/assets/images/listcruncher-grouped.png&quot; alt=&quot;listcruncher-grouped.png&quot; /&gt;   &lt;img src=&quot;/www/assets/images/listcruncher-grouped2.png&quot; alt=&quot;listcruncher-grouped2.png&quot; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org171afec&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org171afec&quot;&gt;&lt;span class=&quot;section-number-3&quot;&gt;4.4&lt;/span&gt; Versioning, templates, testing&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-4-4&quot;&gt;
+&lt;p&gt;
+I will only refer cursorily how to address the other points
+&lt;/p&gt;
+
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;Org mode is part of Emacs which offers a number of powerful templating systems. Org itself supports
+Macros which can generate text parts.&lt;/li&gt;
+&lt;li&gt;Versioning can easily be combined with org mode documents and integrated in the common ways with
+revision control system (e.g. via tags)&lt;/li&gt;
+&lt;li&gt;testing: Since org offers native inclusion of code snippets in different programming languages, test
+can easily be formulated in the avaible test frameworks of these languages. One can also
+define simple tests in form of document code blocks putting out warnings into the document.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org3ea348f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org3ea348f&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;5&lt;/span&gt; References&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-5&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://orgmode.org/&quot;&gt;Emacs Org mode&lt;/a&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://orgmode.org/worg/org-contrib/babel/index.html&quot;&gt;Babel&lt;/a&gt; is Org-mode's ability to execute source code within Org-mode documents&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/dfeich/org-babel-examples&quot;&gt;My own gitub repository of babel examples&lt;/a&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;also shows how examples for producing nice documents by exporting through Latex and Beamer:
+&lt;a href=&quot;https://github.com/dfeich/org-babel-examples/blob/master/latex/latex-example.pdf&quot;&gt;Latex report PDF example&lt;/a&gt;, &lt;a href=&quot;https://github.com/dfeich/org-babel-examples/blob/master/beamer/beamer-example.pdf&quot;&gt;Beamer PDF example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; for parsing Org mode lists into tables&lt;/li&gt;
+&lt;li&gt;Fabrice Niessen's nice &lt;a href=&quot;http://org-babel.readthedocs.io/en/latest/&quot;&gt;Org Babel reference card&lt;/a&gt;. I also am using his Emacs leuven theme and
+he has some nice CSS for high quality Org mode to HTML exporting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Derek Feichtinger</name></author><summary type="html">The amount of administrative tasks in today's workplace is steadily growing, whether you are a manager or just driven by requirements from management for more and more reports. The introduction of IT into these processes held the big potential of easing some of the tedious tasks through automatization and integration, but it seems that we are still a long way away from that goal. Segregated toolchains, lack of compatibility of interfaces and different work cultures combined with the increased amount of communication have resulted in an increase of stress and drudgery. Dealing with the fallout often requires substantial manual effort, frequently in a form which is not reusable and sustainable.</summary></entry><entry><title type="html">Using context dependent Hydras in Emacs</title><link href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" rel="alternate" type="text/html" title="Using context dependent Hydras in Emacs" /><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">&lt;p&gt;
 Even though I think that learning and memorizing shortcuts is good for
 one's brain, a little help by the user interface is much appreciated,
 especially if one is working within a complex mode with many commands.
@@ -105,4 +502,4 @@ The code is not generic enough to make a nice package of it, and I'm
 also using some of my custom functions which I did not yet put into
 MELPA packages. But I give here the &lt;a href=&quot;https://gist.github.com/dfeich/1df4e174d45f05fb5798ca514d28c68a&quot;&gt;link of a github gist&lt;/a&gt;
 containig my current hydra definitions.
-&lt;/p&gt;</content><author><name></name></author><summary type="html">Even though I think that learning and memorizing shortcuts is good for one's brain, a little help by the user interface is much appreciated, especially if one is working within a complex mode with many commands.</summary></entry></feed>
+&lt;/p&gt;</content><author><name>Derek Feichtinger</name></author><summary type="html">Even though I think that learning and memorizing shortcuts is good for one's brain, a little help by the user interface is much appreciated, especially if one is working within a complex mode with many commands.</summary></entry></feed>
