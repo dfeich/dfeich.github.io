@@ -166,10 +166,10 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
 * An example workflow using Emacs Org mode and python
   
   In the following I will demonstrate my own planning workflow that I
-  built myself over the last years using Emacs and its fabulous
+  built up over the last years using Emacs and its fabulous
   Org-Mode.
 
-  Emacs is a phantastic environment for programmers, since the whole
+  Emacs is a fantastic environment for programmers, since the whole
   editor is an extensible lisp environment with a vibrant community producing
   new packages.
 
@@ -180,18 +180,22 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    more efficient for a proficient typist and are easily mixed with
    other parts of a text.
 
-   I have used outlines for years for planning project and service
-   budgets for our scientific computing section. Sub-items can be used
-   to add additional information to a top level list item or to
-   provide new information.
-
-   But only now I implemented a better way automatically derive a
+   I have used outlines for years for the initial planning of most tasks.
+   Actually the approach is now so engrained with me that I use lists as
+   the starting point for almost all documents I write. Their inherent
+   simple structure allows to express the main ideas as top level items, and then
+   use Sub-items to further refine them or add newer information in a way that
+   is transparent.
+   
+   I also have used this approach for drawing up project and service
+   budgets for our scientific computing section over the last years,
+   But only now I implemented a better way to automatically derive a
    useful data structure from such a list in a new Emacs package
-   [[https://github.com/dfeich/org-listcruncher][org-listcruncher]] (The link points to github, but I am just getting
+   [[https://github.com/dfeich/org-listcruncher][org-listcruncher]] (The link points to github. I am only now getting
    the package ready for submission as another MELPA package. It still
-   needs a bit of polishing and additional features ).
+   needs a bit of polishing and additional features).
 
-   Hear an example for a planning list for a budget of two (non-IT) services.
+   Here is an example of a planning list for a budget of two (non-IT) services.
 
    [[file:assets/images/org-listcruncher-list1.png]]
 
@@ -212,6 +216,10 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    rules for how the key/values, the description, and the tagging for a row can get
    arbitrarily defined by the end user. The present default function is just an easy example.
 
+   One can easily imagine using the same kind of approach to derive a table of ingredients and their amounts
+   from the instructions of a cooking recipe that is given as a sequential list of steps. Just needs a bit
+   a smarter parsing function.
+   
 ** Generate a table from the outline
 
    We now would like to derive from the planning list a more suitable
@@ -220,17 +228,18 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    conversion. Based on the semantics defined in the previous section.
 
    The following Org mode code block contains a single line of Emacs
-   lisp and uses the above list (which I named =lstShipGalante=) and
-   automatically creates a table based on an "outer join" of all the
-   keys found with the respective values arranged in the resulting
-   columns.
+   lisp for calling org-listcruncher's main function and uses the
+   above list (which I named =lstShipGalante=) to create a table based
+   on an "outer join" of all the keys found with the respective values
+   arranged in columns.
 
    [[file:assets/images/org-listcruncher-table1.png]]   
 
 
    The list from which we generate the table can later be further
-   edited, and all derivative results will change accordingly. The
-   audit trail is conserved in the list, and naturally it will also be
+   edited, and all derived results will change accordingly when
+   recalculating the whole document. The audit trail is conserved in
+   the list itself through the comments, and naturally it will also be
    conserved in the commits into the revision control system.
 
 ** Data analysis and visualization
@@ -262,7 +271,7 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    - testing: Since org offers native inclusion of code snippets in different programming languages, test
      can easily be formulated in the avaible test frameworks of these languages. One can also
      define simple tests in form of document code blocks putting out warnings into the document.
-
+   
 * References
   - [[https://orgmode.org/][Emacs Org mode]]
     - [[https://orgmode.org/worg/org-contrib/babel/index.html][Babel]] is Org-mode's ability to execute source code within Org-mode documents
@@ -273,6 +282,10 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
   - Fabrice Niessen's nice [[http://org-babel.readthedocs.io/en/latest/][Org Babel reference card]]. I also am using his Emacs leuven theme and
     he has some nice CSS for high quality Org mode to HTML exporting. 
 
+    This blog post is itself a HTML exported Org document that also began its life as a simple
+    list. You can have a look at [[https://raw.githubusercontent.com/dfeich/dfeich.github.io/master/org/_posts/2018-05-20-reproducible-research-for-management.org][its source code on github]]. The Jenkins blogging framework is
+    then used to add some finishing touches for the blog's theme.
+  
 * notes                                                            :noexport:
   - Reproducible research methodology for management tasks
     - what can we scientists and software engineers do to handle management tasks in a better

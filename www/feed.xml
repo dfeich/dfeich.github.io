@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-20T23:50:48+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Reproducible Research and Software Development Methods for Management tasks</title><link href="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html" rel="alternate" type="text/html" title="Reproducible Research and Software Development Methods for Management tasks" /><published>2018-05-20T00:00:00+02:00</published><updated>2018-05-20T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-21T07:20:47+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Reproducible Research and Software Development Methods for Management tasks</title><link href="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html" rel="alternate" type="text/html" title="Reproducible Research and Software Development Methods for Management tasks" /><published>2018-05-20T00:00:00+02:00</published><updated>2018-05-20T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html">&lt;p&gt;
 The amount of administrative tasks in today's workplace is steadily
 growing, whether you are a manager or just driven by requirements from
 management for more and more reports. The introduction of IT into these
@@ -214,12 +214,12 @@ the kind of management related problems we are talking about
 &lt;div class=&quot;outline-text-2&quot; id=&quot;text-4&quot;&gt;
 &lt;p&gt;
 In the following I will demonstrate my own planning workflow that I
-built myself over the last years using Emacs and its fabulous
+built up over the last years using Emacs and its fabulous
 Org-Mode.
 &lt;/p&gt;
 
 &lt;p&gt;
-Emacs is a phantastic environment for programmers, since the whole
+Emacs is a fantastic environment for programmers, since the whole
 editor is an extensible lisp environment with a vibrant community producing
 new packages.
 &lt;/p&gt;
@@ -237,22 +237,26 @@ other parts of a text.
 &lt;/p&gt;
 
 &lt;p&gt;
-I have used outlines for years for planning project and service
-budgets for our scientific computing section. Sub-items can be used
-to add additional information to a top level list item or to
-provide new information.
+I have used outlines for years for the initial planning of most tasks.
+Actually the approach is now so engrained with me that I use lists as
+the starting point for almost all documents I write. Their inherent
+simple structure allows to express the main ideas as top level items, and then
+use Sub-items to further refine them or add newer information in a way that
+is transparent.
 &lt;/p&gt;
 
 &lt;p&gt;
-But only now I implemented a better way automatically derive a
+I also have used this approach for drawing up project and service
+budgets for our scientific computing section over the last years,
+But only now I implemented a better way to automatically derive a
 useful data structure from such a list in a new Emacs package
-&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; (The link points to github, but I am just getting
+&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; (The link points to github. I am only now getting
 the package ready for submission as another MELPA package. It still
-needs a bit of polishing and additional features ).
+needs a bit of polishing and additional features).
 &lt;/p&gt;
 
 &lt;p&gt;
-Hear an example for a planning list for a budget of two (non-IT) services.
+Here is an example of a planning list for a budget of two (non-IT) services.
 &lt;/p&gt;
 
 
@@ -283,6 +287,12 @@ Note that &lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;o
 rules for how the key/values, the description, and the tagging for a row can get
 arbitrarily defined by the end user. The present default function is just an easy example.
 &lt;/p&gt;
+
+&lt;p&gt;
+One can easily imagine using the same kind of approach to derive a table of ingredients and their amounts
+from the instructions of a cooking recipe that is given as a sequential list of steps. Just needs a bit
+a smarter parsing function.
+&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -298,10 +308,10 @@ conversion. Based on the semantics defined in the previous section.
 
 &lt;p&gt;
 The following Org mode code block contains a single line of Emacs
-lisp and uses the above list (which I named &lt;code&gt;lstShipGalante&lt;/code&gt;) and
-automatically creates a table based on an &quot;outer join&quot; of all the
-keys found with the respective values arranged in the resulting
-columns.
+lisp for calling org-listcruncher's main function and uses the
+above list (which I named &lt;code&gt;lstShipGalante&lt;/code&gt;) to create a table based
+on an &quot;outer join&quot; of all the keys found with the respective values
+arranged in columns.
 &lt;/p&gt;
 
 
@@ -313,8 +323,9 @@ columns.
 
 &lt;p&gt;
 The list from which we generate the table can later be further
-edited, and all derivative results will change accordingly. The
-audit trail is conserved in the list, and naturally it will also be
+edited, and all derived results will change accordingly when
+recalculating the whole document. The audit trail is conserved in
+the list itself through the comments, and naturally it will also be
 conserved in the commits into the revision control system.
 &lt;/p&gt;
 &lt;/div&gt;
@@ -391,8 +402,16 @@ define simple tests in form of document code blocks putting out warnings into th
 &lt;a href=&quot;https://github.com/dfeich/org-babel-examples/blob/master/latex/latex-example.pdf&quot;&gt;Latex report PDF example&lt;/a&gt;, &lt;a href=&quot;https://github.com/dfeich/org-babel-examples/blob/master/beamer/beamer-example.pdf&quot;&gt;Beamer PDF example&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; for parsing Org mode lists into tables&lt;/li&gt;
-&lt;li&gt;Fabrice Niessen's nice &lt;a href=&quot;http://org-babel.readthedocs.io/en/latest/&quot;&gt;Org Babel reference card&lt;/a&gt;. I also am using his Emacs leuven theme and
-he has some nice CSS for high quality Org mode to HTML exporting.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Fabrice Niessen's nice &lt;a href=&quot;http://org-babel.readthedocs.io/en/latest/&quot;&gt;Org Babel reference card&lt;/a&gt;. I also am using his Emacs leuven theme and
+he has some nice CSS for high quality Org mode to HTML exporting. 
+&lt;/p&gt;
+
+&lt;p&gt;
+This blog post is itself a HTML exported Org document that also began its life as a simple
+list. You can have a look at &lt;a href=&quot;https://raw.githubusercontent.com/dfeich/dfeich.github.io/master/org/_posts/2018-05-20-reproducible-research-for-management.org&quot;&gt;its source code on github&lt;/a&gt;. The Jenkins blogging framework is
+then used to add some finishing touches for the blog's theme.
+&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content><author><name>Derek Feichtinger</name></author><summary type="html">The amount of administrative tasks in today's workplace is steadily growing, whether you are a manager or just driven by requirements from management for more and more reports. The introduction of IT into these processes held the big potential of easing some of the tedious tasks through automatization and integration, but it seems that we are still a long way away from that goal. Segregated toolchains, lack of compatibility of interfaces and different work cultures combined with the increased amount of communication have resulted in an increase of stress and drudgery. Dealing with the fallout often requires substantial manual effort, frequently in a form which is not reusable and sustainable.</summary></entry><entry><title type="html">Using context dependent Hydras in Emacs</title><link href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" rel="alternate" type="text/html" title="Using context dependent Hydras in Emacs" /><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">&lt;p&gt;

@@ -118,7 +118,7 @@
 
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/www/assets/css/style.css?v=9b3156408e99664fa14878520f11e060d10994f9">
+    <link rel="stylesheet" href="/www/assets/css/style.css?v=a91cc469df62fb7dd91c14d18ed79bd309f2ea2b">
   </head>
   <body>
 
@@ -430,12 +430,12 @@ the kind of management related problems we are talking about
 <div class="outline-text-2" id="text-4">
 <p>
 In the following I will demonstrate my own planning workflow that I
-built myself over the last years using Emacs and its fabulous
+built up over the last years using Emacs and its fabulous
 Org-Mode.
 </p>
 
 <p>
-Emacs is a phantastic environment for programmers, since the whole
+Emacs is a fantastic environment for programmers, since the whole
 editor is an extensible lisp environment with a vibrant community producing
 new packages.
 </p>
@@ -453,22 +453,26 @@ other parts of a text.
 </p>
 
 <p>
-I have used outlines for years for planning project and service
-budgets for our scientific computing section. Sub-items can be used
-to add additional information to a top level list item or to
-provide new information.
+I have used outlines for years for the initial planning of most tasks.
+Actually the approach is now so engrained with me that I use lists as
+the starting point for almost all documents I write. Their inherent
+simple structure allows to express the main ideas as top level items, and then
+use Sub-items to further refine them or add newer information in a way that
+is transparent.
 </p>
 
 <p>
-But only now I implemented a better way automatically derive a
+I also have used this approach for drawing up project and service
+budgets for our scientific computing section over the last years,
+But only now I implemented a better way to automatically derive a
 useful data structure from such a list in a new Emacs package
-<a href="https://github.com/dfeich/org-listcruncher">org-listcruncher</a> (The link points to github, but I am just getting
+<a href="https://github.com/dfeich/org-listcruncher">org-listcruncher</a> (The link points to github. I am only now getting
 the package ready for submission as another MELPA package. It still
-needs a bit of polishing and additional features ).
+needs a bit of polishing and additional features).
 </p>
 
 <p>
-Hear an example for a planning list for a budget of two (non-IT) services.
+Here is an example of a planning list for a budget of two (non-IT) services.
 </p>
 
 
@@ -499,6 +503,12 @@ Note that <a href="https://github.com/dfeich/org-listcruncher">org-listcruncher<
 rules for how the key/values, the description, and the tagging for a row can get
 arbitrarily defined by the end user. The present default function is just an easy example.
 </p>
+
+<p>
+One can easily imagine using the same kind of approach to derive a table of ingredients and their amounts
+from the instructions of a cooking recipe that is given as a sequential list of steps. Just needs a bit
+a smarter parsing function.
+</p>
 </div>
 </div>
 
@@ -514,10 +524,10 @@ conversion. Based on the semantics defined in the previous section.
 
 <p>
 The following Org mode code block contains a single line of Emacs
-lisp and uses the above list (which I named <code>lstShipGalante</code>) and
-automatically creates a table based on an "outer join" of all the
-keys found with the respective values arranged in the resulting
-columns.
+lisp for calling org-listcruncher's main function and uses the
+above list (which I named <code>lstShipGalante</code>) to create a table based
+on an "outer join" of all the keys found with the respective values
+arranged in columns.
 </p>
 
 
@@ -529,8 +539,9 @@ columns.
 
 <p>
 The list from which we generate the table can later be further
-edited, and all derivative results will change accordingly. The
-audit trail is conserved in the list, and naturally it will also be
+edited, and all derived results will change accordingly when
+recalculating the whole document. The audit trail is conserved in
+the list itself through the comments, and naturally it will also be
 conserved in the commits into the revision control system.
 </p>
 </div>
@@ -607,8 +618,16 @@ define simple tests in form of document code blocks putting out warnings into th
 <a href="https://github.com/dfeich/org-babel-examples/blob/master/latex/latex-example.pdf">Latex report PDF example</a>, <a href="https://github.com/dfeich/org-babel-examples/blob/master/beamer/beamer-example.pdf">Beamer PDF example</a></li>
 </ul></li>
 <li><a href="https://github.com/dfeich/org-listcruncher">org-listcruncher</a> for parsing Org mode lists into tables</li>
-<li>Fabrice Niessen's nice <a href="http://org-babel.readthedocs.io/en/latest/">Org Babel reference card</a>. I also am using his Emacs leuven theme and
-he has some nice CSS for high quality Org mode to HTML exporting.</li>
+<li><p>
+Fabrice Niessen's nice <a href="http://org-babel.readthedocs.io/en/latest/">Org Babel reference card</a>. I also am using his Emacs leuven theme and
+he has some nice CSS for high quality Org mode to HTML exporting. 
+</p>
+
+<p>
+This blog post is itself a HTML exported Org document that also began its life as a simple
+list. You can have a look at <a href="https://raw.githubusercontent.com/dfeich/dfeich.github.io/master/org/_posts/2018-05-20-reproducible-research-for-management.org">its source code on github</a>. The Jenkins blogging framework is
+then used to add some finishing touches for the blog's theme.
+</p></li>
 </ul>
 </div>
 </div>
