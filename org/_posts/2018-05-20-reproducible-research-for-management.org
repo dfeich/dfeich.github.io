@@ -233,7 +233,7 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    on an "outer join" of all the keys found with the respective values
    arranged in columns.
 
-   [[file:assets/images/org-listcruncher-table1.png]]   
+   [[file:assets/images/org-listcruncher-table1.png]] 
 
 
    The list from which we generate the table can later be further
@@ -326,40 +326,40 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
 	 because I offered the owner a job on the ship - even though a particular
 	 cutthroat almost prevented the deal by causing a major calamity
        - Seems that today's worms last a year less than in the good old times (recurrence: 4)
-     - item: high quality fluke cleaner (Terces: 20, recurrence: 1, type: ops).
+     - item: high quality fluke cleaner (Terces: 20, recurrence: 1, type: operations).
        Should be made from the best walrus bones.
-     - item: worm fodder (Terces: 50, recurrence: 1, type: ops)
-     - The needed manpower (type: fte, recurrence: 1)
+     - item: worm fodder (Terces: 50, recurrence: 1, type: operations)
+     - The needed manpower (type: manpower, recurrence: 1)
        - item: a competent worminger for 1y (Terces: 80)
        - item: an apprentice worminger for 1y (Terces: 30, account: Drofo)
    - Onboard Restaurant service (service: SvcRestaurant, account: Soldinck)
      - item: furniture (Terces: 80, recurrence: 8, type: investment)
-     - item: tableware breakage (Terces: 20, recurrence: 1, type: ops)
+     - item: tableware breakage (Terces: 20, recurrence: 1, type: operations)
        - [2018-05-18 Fri] I found a cheaper supplier (Terces: 16)
-     - Manpower (type: fte, recurrence: 1)
+     - Manpower (type: manpower, recurrence: 1)
        - item: One head steward for 1y (Terces: 60, account: Captain Bount)
        - item: 2 stewards for 1y (Terces: 90)
 
 
    
    #+NAME: srcTable
-   #+HEADER: :var lname="lstShipGalante" order='("service" "descr" "Terces")
+   #+HEADER: :var lname="lstShipGalante" order='("service" "description" "Terces")
    #+BEGIN_SRC elisp :results value  :exports results
     (org-listcruncher-to-table lname order)
    #+END_SRC
 
    #+RESULTS: srcTable
-   | service       | descr                          | Terces | recurrence | type       | account       |
+   | service       | description                    | Terces | recurrence | type       | account       |
    |---------------+--------------------------------+--------+------------+------------+---------------|
    | SvcWorminger  | A world class worm             |    280 |          4 | livestock  | Mercantides   |
-   | SvcWorminger  | high quality fluke cleaner     |     20 |          1 | ops        | Mercantides   |
-   | SvcWorminger  | worm fodder                    |     50 |          1 | ops        | Mercantides   |
-   | SvcWorminger  | a competent worminger for 1y   |     80 |          1 | fte        | Mercantides   |
-   | SvcWorminger  | an apprentice worminger for 1y |     30 |          1 | fte        | Drofo         |
+   | SvcWorminger  | high quality fluke cleaner     |     20 |          1 | operations | Mercantides   |
+   | SvcWorminger  | worm fodder                    |     50 |          1 | operations | Mercantides   |
+   | SvcWorminger  | a competent worminger for 1y   |     80 |          1 | manpower   | Mercantides   |
+   | SvcWorminger  | an apprentice worminger for 1y |     30 |          1 | manpower   | Drofo         |
    | SvcRestaurant | furniture                      |     80 |          8 | investment | Soldinck      |
-   | SvcRestaurant | tableware breakage             |     16 |          1 | ops        | Soldinck      |
-   | SvcRestaurant | One head steward for 1y        |     60 |          1 | fte        | Captain Bount |
-   | SvcRestaurant | 2 stewards for 1y              |     90 |          1 | fte        | Soldinck      |
+   | SvcRestaurant | tableware breakage             |     16 |          1 | operations | Soldinck      |
+   | SvcRestaurant | One head steward for 1y        |     60 |          1 | manpower   | Captain Bount |
+   | SvcRestaurant | 2 stewards for 1y              |     90 |          1 | manpower   | Soldinck      |
 
 
    #+HEADER: :var tbl=srcTable
