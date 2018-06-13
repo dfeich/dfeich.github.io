@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-05-21T07:47:04+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Reproducible Research and Software Development Methods for Management tasks</title><link href="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html" rel="alternate" type="text/html" title="Reproducible Research and Software Development Methods for Management tasks" /><published>2018-05-20T00:00:00+02:00</published><updated>2018-05-20T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/www/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/www/" rel="alternate" type="text/html" /><updated>2018-06-13T07:41:45+02:00</updated><id>http://localhost:4000/www/</id><title type="html">Through the Eyes of the Overworld</title><subtitle>A blog of travels through the varied landscapes of IT with Emacs as one's trusty friend.</subtitle><entry><title type="html">Reproducible Research and Software Development Methods for Management tasks</title><link href="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html" rel="alternate" type="text/html" title="Reproducible Research and Software Development Methods for Management tasks" /><published>2018-05-20T00:00:00+02:00</published><updated>2018-05-20T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html">&lt;p&gt;
 The amount of administrative tasks in today's workplace is steadily
 growing, whether you are a manager or just driven by requirements from
 management for more and more reports. The introduction of IT into these
@@ -250,9 +250,7 @@ I also have used this approach for drawing up project and service
 budgets for our scientific computing section over the last years,
 But only now I implemented a better way to automatically derive a
 useful data structure from such a list in a new Emacs package
-&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; (The link points to github. I am only now getting
-the package ready for submission as another MELPA package. It still
-needs a bit of polishing and additional features).
+&lt;a href=&quot;https://github.com/dfeich/org-listcruncher&quot;&gt;org-listcruncher&lt;/a&gt; (you can get the &lt;a href=&quot;https://melpa.org/#/org-listcruncher&quot;&gt;package from MELPA&lt;/a&gt;).
 &lt;/p&gt;
 
 &lt;p&gt;
@@ -379,8 +377,8 @@ I will only refer cursorily how to address the other points
 &lt;li&gt;Org mode is part of Emacs which offers a number of powerful templating systems. Org itself supports
 Macros which can generate text parts.&lt;/li&gt;
 &lt;li&gt;Versioning can easily be combined with org mode documents and integrated in the common ways with
-revision control system (e.g. via tags)&lt;/li&gt;
-&lt;li&gt;testing: Since org offers native inclusion of code snippets in different programming languages, test
+revision control systems like git (e.g. via tags)&lt;/li&gt;
+&lt;li&gt;testing: Since org offers native inclusion of code snippets in different programming languages, tests
 can easily be formulated in the avaible test frameworks of these languages. One can also
 define simple tests in form of document code blocks putting out warnings into the document.&lt;/li&gt;
 &lt;/ul&gt;
@@ -395,6 +393,8 @@ define simple tests in form of document code blocks putting out warnings into th
 &lt;li&gt;&lt;a href=&quot;https://orgmode.org/&quot;&gt;Emacs Org mode&lt;/a&gt;
 &lt;ul class=&quot;org-ul&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://orgmode.org/worg/org-contrib/babel/index.html&quot;&gt;Babel&lt;/a&gt; is Org-mode's ability to execute source code within Org-mode documents&lt;/li&gt;
+&lt;li&gt;Please appreciate that there is a big number of Open Source programmers tending
+to the Emacs / Org Mode and Babel ecosystem.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/dfeich/org-babel-examples&quot;&gt;My own gitub repository of babel examples&lt;/a&gt;
 &lt;ul class=&quot;org-ul&quot;&gt;
@@ -412,6 +412,19 @@ This blog post is itself a HTML exported Org document that also began its life a
 list. You can have a look at &lt;a href=&quot;https://raw.githubusercontent.com/dfeich/dfeich.github.io/master/org/_posts/2018-05-20-reproducible-research-for-management.org&quot;&gt;its source code on github&lt;/a&gt;. The Jenkins blogging framework is
 then used to add some finishing touches for the blog's theme.
 &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org9bb32e4&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org9bb32e4&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;6&lt;/span&gt; Publishing&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-6&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;I submitted to reddit under &lt;a href=&quot;https://redd.it/8kvvz8&quot;&gt;https://redd.it/8kvvz8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;thanks to jcs from the Irreal blog for reviewing and pointing to my
+article: &lt;a href=&quot;http://irreal.org/blog/?p=7216&quot;&gt;http://irreal.org/blog/?p=7216&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;thanks to Sacha Chua for including it in her Emacs news
+&lt;a href=&quot;http://sachachua.com/blog/2018/05/2018-05-21-emacs-news/&quot;&gt;http://sachachua.com/blog/2018/05/2018-05-21-emacs-news/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content><author><name>Derek Feichtinger</name></author><summary type="html">The amount of administrative tasks in today's workplace is steadily growing, whether you are a manager or just driven by requirements from management for more and more reports. The introduction of IT into these processes held the big potential of easing some of the tedious tasks through automatization and integration, but it seems that we are still a long way away from that goal. Segregated toolchains, lack of compatibility of interfaces and different work cultures combined with the increased amount of communication have resulted in an increase of stress and drudgery. Dealing with the fallout often requires substantial manual effort, frequently in a form which is not reusable and sustainable.</summary></entry><entry><title type="html">Using context dependent Hydras in Emacs</title><link href="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html" rel="alternate" type="text/html" title="Using context dependent Hydras in Emacs" /><published>2018-05-10T00:00:00+02:00</published><updated>2018-05-10T00:00:00+02:00</updated><id>http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra</id><content type="html" xml:base="http://localhost:4000/www/org-mode/emacs/2018/05/10/context-hydra.html">&lt;p&gt;

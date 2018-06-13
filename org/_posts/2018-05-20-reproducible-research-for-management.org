@@ -191,9 +191,7 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    budgets for our scientific computing section over the last years,
    But only now I implemented a better way to automatically derive a
    useful data structure from such a list in a new Emacs package
-   [[https://github.com/dfeich/org-listcruncher][org-listcruncher]] (The link points to github. I am only now getting
-   the package ready for submission as another MELPA package. It still
-   needs a bit of polishing and additional features).
+   [[https://github.com/dfeich/org-listcruncher][org-listcruncher]] (you can get the [[https://melpa.org/#/org-listcruncher][package from MELPA]]).
 
    Here is an example of a planning list for a budget of two (non-IT) services.
 
@@ -267,14 +265,16 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    - Org mode is part of Emacs which offers a number of powerful templating systems. Org itself supports
      Macros which can generate text parts.
    - Versioning can easily be combined with org mode documents and integrated in the common ways with
-     revision control system (e.g. via tags)
-   - testing: Since org offers native inclusion of code snippets in different programming languages, test
+     revision control systems like git (e.g. via tags)
+   - testing: Since org offers native inclusion of code snippets in different programming languages, tests
      can easily be formulated in the avaible test frameworks of these languages. One can also
      define simple tests in form of document code blocks putting out warnings into the document.
    
 * References
   - [[https://orgmode.org/][Emacs Org mode]]
     - [[https://orgmode.org/worg/org-contrib/babel/index.html][Babel]] is Org-mode's ability to execute source code within Org-mode documents
+    - Please appreciate that there is a big number of Open Source programmers tending
+      to the Emacs / Org Mode and Babel ecosystem.
   - [[https://github.com/dfeich/org-babel-examples][My own gitub repository of babel examples]]
     - also shows how examples for producing nice documents by exporting through Latex and Beamer:
       [[https://github.com/dfeich/org-babel-examples/blob/master/latex/latex-example.pdf][Latex report PDF example]], [[https://github.com/dfeich/org-babel-examples/blob/master/beamer/beamer-example.pdf][Beamer PDF example]]      
@@ -427,6 +427,13 @@ you can just scroll down to [[* An example workflow using Emacs Org mode and pyt
    #+RESULTS:
    [[file:assets/images/listcruncher-grouped2.png]]
    
+* Publishing
+  - I submitted to reddit under https://redd.it/8kvvz8
+  - thanks to jcs from the Irreal blog for reviewing and pointing to my
+    article: http://irreal.org/blog/?p=7216
+  - thanks to Sacha Chua for including it in her Emacs news
+    http://sachachua.com/blog/2018/05/2018-05-21-emacs-news/
+
 * COMMENT Emacs settings
 Local variables:
 org-confirm-babel-evaluate: nil
